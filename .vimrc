@@ -28,16 +28,19 @@ nnoremap <C-e> :tabn<CR>      " Переключение на следующую
 nnoremap <C-l> :execute 'tabnew' fnameescape(expand('<cfile>')) <CR>
 autocmd TabEnter * silent! lcd %:p:h
 
-" Открытие файла по ссылке в новой вкладке через Alt+l
-nnoremap <A-l> :tabedit <cfile><CR>
+" Открытие файла по ссылке в текущем окне (сплите) через Alt+l
+nnoremap <A-l> :edit <cfile><CR>
 
 " Открытие файла по ссылке в правом вертикальном сплите через Alt+k
 nnoremap <A-k> :vertical rightbelow vsplit <cfile><CR>
 
-
-
 nnoremap <C-x> :b#<CR>
-nnoremap <C-k> :e <cfile><CR>
+
+" Переход на следующий буфер (файл)
+nnoremap <A-n> :bnext<CR>
+
+" Переход на предыдущий буфер (файл)
+nnoremap <A-p> :bprevious<CR>
 
 " Включение подсветки синтаксиса
 syntax enable
@@ -87,8 +90,8 @@ nnoremap <M-r> :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " Горячие клавиши для копирования в системный буфер
 nnoremap <C-C> "+y
-vnoremap <C-C> "+y                
-imap <C-V> <C-R>+                   
+vnoremap <C-C> "+y
+imap <C-V> <C-R>+ 
 
 " Горячие клавиши для NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>    " Открыть/закрыть NERDTree
@@ -104,4 +107,3 @@ vnoremap <M-Up> :m '<-2<CR>gv=gv
 
 " Перемещение выделенных строк вниз при нажатии Alt+Down в визуальном режиме
 vnoremap <M-Down> :m '>+1<CR>gv=gv
-
