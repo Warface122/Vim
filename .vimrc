@@ -37,10 +37,10 @@ nnoremap <A-k> :vertical rightbelow vsplit <cfile><CR>
 nnoremap <C-x> :b#<CR>
 
 " Переход на следующий буфер (файл)
-nnoremap <A-n> :bnext<CR>
+nnoremap <A-e> :bnext<CR>
 
 " Переход на предыдущий буфер (файл)
-nnoremap <A-p> :bprevious<CR>
+nnoremap <A-q> :bprevious<CR>
 
 " Включение подсветки синтаксиса
 syntax enable
