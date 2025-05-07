@@ -28,12 +28,45 @@ nnoremap <C-e> :tabn<CR>      " Переключение на следующую
 nnoremap <C-l> :execute 'tabnew' fnameescape(expand('<cfile>')) <CR>
 autocmd TabEnter * silent! lcd %:p:h
 
-" Открытие файла по ссылке в вертикальном сплите при нажатии Alt+h
-nnoremap <A-h> :execute 'vsplit ' . fnameescape(expand('<cfile>'))<CR>
+" ===============================
+" Открытие файла по ссылке в новой вкладке
+" ===============================
+" При нажатии Ctrl+h открывается файл под курсором в новой вкладке.
+" Это позволяет оставить исходный файл (с ссылкой) открытным, чтобы потом переходить между вкладками.
+nnoremap <C-h> :tabedit <cfile><CR>
 
-" Переназначение ключа в буфере NERDTree: при нажатии Alt+k открываем выбранный файл в вертикальном сплите.
-" Здесь мы используем, что в NERDTree нажатие "s" (обычно) открывает файл в вертикальном сплите.
-autocmd FileType nerdtree nnoremap <buffer> <A-k> s
+
+" ===============================
+" Функция для открытия файла из NERDTree в правом вертикальном сплите
+" ===============================
+function! OpenInRightVsplitNERDTree()
+  " Получаем текущую выбранную ноду в NERDTree
+  let node = NERDTreeGetSelectedNode()
+  if empty(node)
+    return
+  endif
+  " Если нода – директория, просто переключаем её (разворачиваем/сворачиваем)
+  if node.isDirectory
+    call node.toggle()
+  else
+    " Если нода – файл, получаем его путь.
+    " Иногда node.path может быть строкой, а иногда объектом с методом .str()
+    if type(node.path) == type("")
+      let file = node.path
+    else
+      let file = node.path.str()
+    endif
+    " Открываем файл в правом вертикальном сплите с помощью команды vertical rightbelow vsplit
+    execute 'vertical rightbelow vsplit ' . fnameescape(file)
+  endif
+endfunction
+
+" ===============================
+" Привязка Alt+k для NERDTree
+" ===============================
+" В буфере NERDTree при нажатии Alt+k вызывается функция OpenInRightVsplitNERDTree()
+autocmd FileType nerdtree nnoremap <buffer> <A-k> :call OpenInRightVsplitNERDTree()<CR>
+
 
 nnoremap <C-x> :b#<CR>
 nnoremap <C-k> :e <cfile><CR>
