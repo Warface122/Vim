@@ -28,44 +28,12 @@ nnoremap <C-e> :tabn<CR>      " Переключение на следующую
 nnoremap <C-l> :execute 'tabnew' fnameescape(expand('<cfile>')) <CR>
 autocmd TabEnter * silent! lcd %:p:h
 
-" -----------------------------------------------
-" Открытие файла из обычного буфера (по ссылке) через Alt+l
-" -----------------------------------------------
-" Эта команда открывает файл, имя которого берётся из <cfile>,
-" в новой вкладке, заменяя содержимое текущего окна (если оно представляет сплит)
-" таким образом, исходное окно с ссылкой остаётся в фоне.
+" Открытие файла по ссылке в новой вкладке через Alt+l
 nnoremap <A-l> :tabedit <cfile><CR>
 
-" -----------------------------------------------
-" Функция для открытия файла из NERDTree в правом вертикальном сплите
-" -----------------------------------------------
-function! OpenInRightVsplitNERDTree()
-  " Получаем выбранную ноду NERDTree
-  let node = NERDTreeGetSelectedNode()
-  if empty(node)
-    return
-  endif
-  " Если нода является директорией, переключаем её (разворачиваем/сворачиваем)
-  if node.isDirectory
-    call node.toggle()
-  else
-    " Получаем путь к файлу из ноды
-    if type(node.path) == type("")
-      let file = node.path
-    else
-      let file = node.path.str()
-    endif
-    " Открываем файл в правом вертикальном сплите.
-    " Команда "vertical rightbelow vsplit" создаёт новый сплит справа от текущего окна.
-    execute 'vertical rightbelow vsplit ' . fnameescape(file)
-  endif
-endfunction
+" Открытие файла по ссылке в правом вертикальном сплите через Alt+k
+nnoremap <A-k> :vertical rightbelow vsplit <cfile><CR>
 
-" -----------------------------------------------
-" Привязка клавиши Alt+k в буфере NERDTree
-" -----------------------------------------------
-" Эта привязка активируется только в буфере с файловым деревом NERDTree.
-autocmd FileType nerdtree nnoremap <buffer> <A-k> :call OpenInRightVsplitNERDTree()<CR>
 
 
 nnoremap <C-x> :b#<CR>
