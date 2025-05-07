@@ -95,6 +95,8 @@ imap <C-V> <C-R>+
 
 " Горячие клавиши для NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>    " Открыть/закрыть NERDTree
+let g:NERDTreeMapActivateNode = 'v'
+autocmd FileType nerdtree nnoremap  <buffer> <A-k> o<C-w>L
 
 " Перемещение строки вверх при нажатии Alt+Up
 nnoremap <M-Up> :m .-2<CR>==
