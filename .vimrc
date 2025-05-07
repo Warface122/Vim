@@ -32,7 +32,7 @@ autocmd TabEnter * silent! lcd %:p:h
 nnoremap <A-l> :edit <cfile><CR>
 
 " Открытие файла по ссылке в правом вертикальном сплите через Alt+k
-nnoremap <M-k> :tabnext $<Bar>vsplit<Bar>edit %<Bar>wincmd L<CR>
+nnoremap <F2> :vsp<CR>:execute "normal! \<C-w>l"<CR>:NERDTreeFind<CR>:execute "normal! \<C-w>l"<CR>
 
 nnoremap <C-x> :b#<CR>
 
