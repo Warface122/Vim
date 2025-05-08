@@ -10,9 +10,9 @@ set guioptions-=T   	   "Turn off Panel settings
 set guioptions-=l	       "Turn off left slider	
 set guioptions-=r    	   "Turn off right slider
 set timeout timeoutlen=10
-set clipboard=unnamedplus    " Включение системного буфера обмена
 set termguicolors
 set number                   " Включение номеров строк
+"set clipboard=unnamedplus    " Включение системного буфера обмена
 "set guitablabel=%t%m
 "set lines=50
 "set columns=150
