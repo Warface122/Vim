@@ -91,7 +91,7 @@ nnoremap <M-r> :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Горячие клавиши для копирования в системный буфер
 nnoremap <C-C> "+y
 vnoremap <C-C> "+y
-imap <C-V> <C-R>+ 
+imap <C-V> <C-R>+
 
 " Горячие клавиши для NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>    " Открыть/закрыть NERDTree
