@@ -31,9 +31,6 @@ autocmd TabEnter * silent! lcd %:p:h
 " Открытие файла по ссылке в текущем окне (сплите) через Alt+l
 nnoremap <A-l> :silent! execute 'edit ' . fnameescape(expand('<cfile>')) \| lcd %:p:h<CR>
 
-" Открытие файла по ссылке в правом вертикальном сплите через Alt+k
-nnoremap <F2> :vsp<CR>:execute "normal! \<C-w>l"<CR>:NERDTreeFind<CR>:execute "normal! \<C-w>l"<CR>
-
 nnoremap <C-x> :b#<CR>
 
 " Переход на следующий буфер (файл)
