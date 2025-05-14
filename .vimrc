@@ -93,6 +93,7 @@ imap <C-V> <C-R>+
 " Горячие клавиши для NERDTree
 nnoremap <C-t> :NERDTreeToggle<CR>    " Открыть/закрыть NERDTree
 nnoremap <A-k> :execute 'rightbelow vsplit ' . expand('<cfile>') \| wincmd L<CR>
+nnoremap <A-h> :execute 'rightbelow split ' . expand('<cfile>') \| wincmd L<CR>
 
 " Перемещение строки вверх при нажатии Alt+Up
 nnoremap <M-Up> :m .-2<CR>==
