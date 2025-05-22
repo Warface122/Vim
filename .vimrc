@@ -106,3 +106,8 @@ vnoremap <M-Up> :m '<-2<CR>gv=gv
 
 " Перемещение выделенных строк вниз при нажатии Alt+Down в визуальном режиме
 vnoremap <M-Down> :m '>+1<CR>gv=gv
+
+"For diff 
+nnoremap <A-f> :windo diffthis<CR>
+nnoremap <A-F> :windo diffoff<CR>
+
