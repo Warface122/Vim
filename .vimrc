@@ -12,6 +12,7 @@ set guioptions-=r    	   "Turn off right slider
 set timeout timeoutlen=10
 set termguicolors
 set number                   " Включение номеров строк
+set noswapfile
 "set clipboard=unnamedplus    " Включение системного буфера обмена
 "set guitablabel=%t%m
 "set lines=50
